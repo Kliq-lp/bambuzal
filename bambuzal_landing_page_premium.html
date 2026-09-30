@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bambuzal Restaurante em Valinhos. Buffet self-service no fogão a lenha, comida mineira, churrasqueira, sobremesas e pratos especiais aos finais de semana.">
+  <title>Bambuzal Restaurante | Fogão a Lenha em Valinhos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --green-950:#102d21;
+      --green-900:#173a2a;
+      --green-800:#214d38;
+      --green-700:#2f694c;
+      --green-600:#427b59;
+      --leaf:#9fc653;
+      --leaf-soft:#dce8bb;
+      --cream:#f3eee3;
+      --paper:#fffdf8;
+      --sand:#e6dccb;
+      --warm:#bd6a32;
+      --ink:#20231f;
+      --muted:#70766f;
+      --white:#fff;
+      --shadow:0 22px 70px rgba(20,46,33,.12);
+      --shadow-sm:0 12px 36px rgba(20,46,33,.08);
+      --radius-xl:34px;
+      --radius-lg:26px;
+      --radius-md:18px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'DM Sans',sans-serif;
+      color:var(--ink);
+      background:var(--paper);
+      line-height:1.65;
+      overflow-x:hidden;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 8% 14%, rgba(159,198,83,.08), transparent 26%),
+        radial-gradient(circle at 88% 74%, rgba(47,105,76,.06), transparent 26%);
+    }
+
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+    .container{width:min(1180px,calc(100% - 38px));margin:0 auto}
+
+    .topbar{
+      background:var(--green-950);
+      color:rgba(255,255,255,.9);
+      font-size:.88rem;
+    }
+    .topbar .container{
+      min-height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    .topbar strong{color:#e2efbb}
+    .topbar a{transition:.2s}
+    .topbar a:hover{color:#e2efbb}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(255,253,248,.88);
+      border-bottom:1px solid rgba(23,58,42,.08);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      transition:.3s ease;
+    }
+    header.scrolled{
+      box-shadow:0 10px 30px rgba(16,45,33,.08);
+      background:rgba(255,253,248,.96);
+    }
+    nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:26px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:230px;
+    }
+    .brand img{
+      width:58px;
+      height:58px;
+      object-fit:contain;
+      filter:drop-shadow(0 8px 16px rgba(0,0,0,.08));
+    }
+    .brand-copy{
+      line-height:1.05;
+      display:flex;
+      flex-direction:column;
+    }
+    .brand-copy strong{
+      font-family:'Playfair Display',serif;
+      color:var(--green-800);
+      font-size:1.42rem;
+      letter-spacing:-.02em;
+    }
+    .brand-copy span{
+      margin-top:6px;
+      font-size:.68rem;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      color:var(--muted);
+    }
+
+    .navlinks{
+      display:flex;
+      align-items:center;
+      gap:30px;
+      font-size:.94rem;
+      font-weight:600;
+      color:#3a443d;
+    }
+    .navlinks a{
+      position:relative;
+      padding:8px 0;
+    }
+    .navlinks a:after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:100%;
+      bottom:1px;
+      height:2px;
+      background:var(--green-700);
+      transition:.25s ease;
+    }
+    .navlinks a:hover:after{right:0}
+    .navlinks a:hover{color:var(--green-800)}
+
+    .btn{
+      min-height:49px;
+      padding:0 22px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      font-weight:700;
+      cursor:pointer;
+      transition:.25s ease;
+      white-space:nowrap;
+    }
+    .btn-primary{
+      background:var(--green-800);
+      color:#fff;
+      box-shadow:0 12px 28px rgba(33,77,56,.2);
+    }
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      background:var(--green-950);
+      box-shadow:0 18px 34px rgba(33,77,56,.22);
+    }
+    .btn-light{
+      background:#fff;
+      color:var(--green-800);
+      box-shadow:0 12px 30px rgba(0,0,0,.11);
+    }
+    .btn-light:hover{transform:translateY(-2px)}
+    .btn-outline{
+      border-color:rgba(33,77,56,.24);
+      color:var(--green-800);
+      background:transparent;
+    }
+    .btn-outline:hover{
+      background:var(--green-800);
+      color:#fff;
+      transform:translateY(-2px);
+    }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      min-height:760px;
+      color:#fff;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      isolation:isolate;
+    }
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      z-index:-3;
+      background:
+        linear-gradient(90deg,rgba(8,24,17,.86) 0%,rgba(8,24,17,.72) 36%,rgba(8,24,17,.28) 72%,rgba(8,24,17,.12) 100%),
+        url('https://yata-apix-cc5e9166-3134-4db0-9901-84889409cb50.s3-object.locaweb.com.br/ab3ae619925745b3b7206aba6f9e6e24.jpg') center/cover no-repeat;
+      transform:scale(1.06);
+      animation:heroZoom 14s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom{
+      from{transform:scale(1.05)}
+      to{transform:scale(1.1)}
+    }
+    .hero:after{
+      content:"";
+      position:absolute;
+      z-index:-1;
+      inset:auto 0 0;
+      height:180px;
+      background:linear-gradient(transparent,rgba(10,25,18,.52));
+    }
+    .hero-inner{
+      max-width:760px;
+      padding:110px 0 150px;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      color:#e2efbb;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.78rem;
+      font-weight:700;
+      margin-bottom:23px;
+    }
+    .eyebrow:before{
+      content:"";
+      width:42px;
+      height:2px;
+      background:var(--leaf);
+    }
+    .hero h1{
+      margin:0;
+      font-family:'Playfair Display',serif;
+      font-size:clamp(3.8rem,7vw,7.4rem);
+      line-height:.9;
+      letter-spacing:-.05em;
+      max-width:790px;
+    }
+    .hero h1 em{
+      display:block;
+      font-weight:500;
+      color:#ddeaaf;
+      margin-top:.06em;
+    }
+    .hero p{
+      max-width:650px;
+      font-size:1.12rem;
+      color:rgba(255,255,255,.86);
+      margin:28px 0 34px;
+    }
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .hero-meta{
+      position:absolute;
+      left:50%;
+      bottom:26px;
+      transform:translateX(-50%);
+      z-index:3;
+      width:min(1180px,calc(100% - 38px));
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      background:rgba(255,253,248,.94);
+      color:var(--ink);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
+    }
+    .meta-item{
+      padding:20px 24px;
+      border-right:1px solid rgba(33,77,56,.08);
+    }
+    .meta-item:last-child{border-right:0}
+    .meta-item span{
+      display:block;
+      color:var(--muted);
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      margin-bottom:4px;
+    }
+    .meta-item strong{
+      color:var(--green-800);
+      font-size:.96rem;
+    }
+
+    /* COMMON */
+    section{padding:104px 0}
+    .section-kicker{
+      font-size:.76rem;
+      text-transform:uppercase;
+      letter-spacing:.15em;
+      font-weight:700;
+      color:var(--green-700);
+    }
+    .section-title{
+      font-family:'Playfair Display',serif;
+      margin:9px 0 18px;
+      font-size:clamp(2.6rem,5vw,4.6rem);
+      line-height:1.02;
+      letter-spacing:-.035em;
+    }
+    .section-intro{
+      color:var(--muted);
+      font-size:1.04rem;
+      max-width:720px;
+      margin:0;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity .75s ease,transform .75s ease;
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:none;
+    }
+
+    /* EXPERIENCE */
+    .experience-grid{
+      display:grid;
+      grid-template-columns:1.04fr .96fr;
+      gap:64px;
+      align-items:center;
+    }
+    .experience-photo{
+      min-height:570px;
+      border-radius:var(--radius-xl);
+      background:url('https://yata-apix-cc5e9166-3134-4db0-9901-84889409cb50.s3-object.locaweb.com.br/0f9f56a91ec741abbbd1020cc221edea.jpg') center/cover no-repeat;
+      position:relative;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .experience-photo:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,transparent 50%,rgba(12,31,22,.42));
+    }
+    .photo-note{
+      position:absolute;
+      z-index:2;
+      left:24px;
+      bottom:24px;
+      width:min(320px,calc(100% - 48px));
+      background:rgba(255,253,248,.92);
+      border:1px solid rgba(255,255,255,.5);
+      backdrop-filter:blur(12px);
+      border-radius:18px;
+      padding:18px 20px;
+      color:var(--green-800);
+      font-weight:700;
+      box-shadow:0 18px 42px rgba(0,0,0,.16);
+    }
+    .feature-list{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:32px;
+    }
+    .feature{
+      border:1px solid rgba(33,77,56,.08);
+      border-radius:18px;
+      padding:18px;
+      background:#fff;
+      transition:.25s ease;
+    }
+    .feature:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-sm);
+      border-color:rgba(33,77,56,.16);
+    }
+    .feature strong{
+      display:block;
+      color:var(--green-800);
+      font-size:1.08rem;
+      margin-bottom:3px;
+    }
+    .feature span{
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    /* MENU */
+    .menu{
+      background:
+        linear-gradient(rgba(243,238,227,.96),rgba(243,238,227,.96)),
+        url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      position:relative;
+      overflow:hidden;
+    }
+    .menu:before{
+      content:"";
+      position:absolute;
+      top:-100px;
+      right:-80px;
+      width:320px;
+      height:320px;
+      border:1px solid rgba(47,105,76,.08);
+      border-radius:50%;
+    }
+    .menu-top{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:28px;
+      margin-bottom:46px;
+      position:relative;
+      z-index:1;
+    }
+
+    .menu-shell{
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:24px;
+      align-items:start;
+      position:relative;
+      z-index:1;
+    }
+    .menu-nav{
+      position:sticky;
+      top:120px;
+      background:var(--green-950);
+      color:#fff;
+      border-radius:26px;
+      padding:18px;
+      box-shadow:0 24px 55px rgba(16,45,33,.18);
+    }
+    .menu-nav-head{
+      padding:12px 12px 18px;
+      border-bottom:1px solid rgba(255,255,255,.1);
+      margin-bottom:12px;
+    }
+    .menu-nav-head small{
+      display:block;
+      color:#aebeb2;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:.7rem;
+      margin-bottom:3px;
+    }
+    .menu-nav-head strong{
+      font-family:'Playfair Display',serif;
+      font-size:1.45rem;
+    }
+    .menu-tab{
+      width:100%;
+      border:0;
+      background:transparent;
+      color:rgba(255,255,255,.72);
+      border-radius:14px;
+      padding:13px 14px;
+      text-align:left;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      transition:.22s ease;
+      font-weight:600;
+    }
+    .menu-tab:hover{
+      color:#fff;
+      background:rgba(255,255,255,.06);
+    }
+    .menu-tab.active{
+      background:#fff;
+      color:var(--green-900);
+      box-shadow:0 8px 24px rgba(0,0,0,.14);
+    }
+    .menu-tab .count{
+      font-size:.72rem;
+      opacity:.65;
+    }
+
+    .menu-content{
+      background:#fff;
+      border-radius:30px;
+      padding:34px;
+      box-shadow:var(--shadow-sm);
+      min-height:620px;
+      border:1px solid rgba(33,77,56,.07);
+    }
+    .menu-panel{display:none;animation:panelIn .38s ease}
+    .menu-panel.active{display:block}
+    @keyframes panelIn{
+      from{opacity:0;transform:translateY(12px)}
+      to{opacity:1;transform:none}
+    }
+    .panel-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:22px;
+      padding-bottom:24px;
+      border-bottom:1px solid var(--cream);
+      margin-bottom:24px;
+    }
+    .panel-head h3{
+      margin:0;
+      color:var(--green-800);
+      font-family:'Playfair Display',serif;
+      font-size:2.4rem;
+      line-height:1;
+    }
+    .panel-head p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+    .menu-photo{
+      width:150px;
+      height:100px;
+      border-radius:18px;
+      background-size:cover;
+      background-position:center;
+      flex:0 0 auto;
+      box-shadow:0 10px 25px rgba(0,0,0,.1);
+    }
+
+    .dish-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      column-gap:28px;
+    }
+    .dish{
+      min-height:58px;
+      padding:13px 2px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      border-bottom:1px dashed #ded8cb;
+      color:#343b35;
+    }
+    .dish:before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--leaf);
+      flex:0 0 auto;
+    }
+    .dish.rotative:after{
+      content:"rotativo";
+      margin-left:auto;
+      font-size:.66rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:#7b6c57;
+      background:#f5eee3;
+      border-radius:999px;
+      padding:4px 7px;
+    }
+
+    .menu-highlight{
+      margin-top:30px;
+      border-radius:22px;
+      background:linear-gradient(135deg,var(--green-950),var(--green-700));
+      color:#fff;
+      padding:24px;
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:18px;
+      align-items:center;
+    }
+    .menu-highlight .icon{
+      width:48px;height:48px;border-radius:50%;
+      display:grid;place-items:center;
+      background:#dce8bb;color:var(--green-900);
+      font-size:1.2rem;font-weight:900;
+    }
+    .menu-highlight strong{
+      font-family:'Playfair Display',serif;
+      font-size:1.35rem;
+      display:block;
+      margin-bottom:4px;
+    }
+    .menu-highlight span{color:rgba(255,255,255,.74);font-size:.9rem}
+
+    .menu-foot{
+      margin-top:22px;
+      color:var(--muted);
+      font-size:.86rem;
+    }
+
+    /* SPECIALS */
+    .specials{
+      background:var(--green-950);
+      color:#fff;
+      position:relative;
+      overflow:hidden;
+    }
+    .specials:before,
+    .specials:after{
+      content:"";
+      position:absolute;
+      border:1px solid rgba(220,232,187,.12);
+      border-radius:50%;
+    }
+    .specials:before{width:420px;height:420px;right:-180px;top:-160px}
+    .specials:after{width:260px;height:260px;left:-120px;bottom:-120px}
+    .specials-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:60px;
+      align-items:center;
+      position:relative;
+      z-index:1;
+    }
+    .specials .section-kicker{color:#dce8bb}
+    .specials .section-intro{color:rgba(255,255,255,.72)}
+    .special-photo{
+      min-height:560px;
+      border-radius:32px;
+      background:url('https://yata-apix-cc5e9166-3134-4db0-9901-84889409cb50.s3-object.locaweb.com.br/c9155f2f4e9d41849db75e6c992cde07.jpg') center/cover;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 35px 80px rgba(0,0,0,.26);
+    }
+    .special-photo:after{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(180deg,transparent 55%,rgba(10,25,18,.52));
+    }
+    .special-cards{
+      display:grid;
+      gap:12px;
+      margin:30px 0 34px;
+    }
+    .special-card{
+      padding:16px 18px;
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:16px;
+      background:rgba(255,255,255,.04);
+      display:flex;
+      align-items:center;
+      gap:14px;
+      transition:.25s ease;
+    }
+    .special-card:hover{
+      transform:translateX(6px);
+      background:rgba(255,255,255,.07);
+      border-color:rgba(220,232,187,.25);
+    }
+    .special-card i{
+      width:30px;height:30px;border-radius:50%;
+      display:grid;place-items:center;
+      background:#dce8bb;color:var(--green-950);
+      font-style:normal;font-weight:900;
+    }
+
+    /* GALLERY */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr;
+      grid-template-rows:280px 280px;
+      gap:14px;
+      margin-top:40px;
+    }
+    .gallery-item{
+      border-radius:24px;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      overflow:hidden;
+      box-shadow:var(--shadow-sm);
+    }
+    .gallery-item:after{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(180deg,transparent 60%,rgba(10,25,18,.28));
+      opacity:.6;
+      transition:.35s ease;
+    }
+    .gallery-item:hover:after{opacity:.9}
+    .gallery-item:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:inherit;
+      background-size:cover;
+      background-position:center;
+      transition:transform .55s ease;
+    }
+    .gallery-item:hover:before{transform:scale(1.06)}
+    .gallery-item.g1{grid-row:1/3}
+    .gallery-item.g4{grid-column:2/4}
+
+    /* VISIT */
+    .visit{
+      background:#151b17;
+      color:#fff;
+    }
+    .visit-grid{
+      display:grid;
+      grid-template-columns:.92fr 1.08fr;
+      gap:30px;
+      align-items:stretch;
+      margin-top:42px;
+    }
+    .visit-card{
+      padding:34px;
+      border-radius:28px;
+      background:#1f2922;
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .visit-card h3{
+      margin:0 0 26px;
+      font-family:'Playfair Display',serif;
+      font-size:2.1rem;
+    }
+    .info{
+      padding:15px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .info span{
+      display:block;
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:#94a297;
+      margin-bottom:5px;
+    }
+    .info strong{font-size:.98rem;color:#fff}
+    .map{
+      border:0;
+      width:100%;
+      min-height:540px;
+      border-radius:28px;
+      filter:saturate(.8) contrast(1.02);
+    }
+
+    footer{
+      background:#0d120f;
+      color:#aeb8b0;
+      padding:32px 0;
+      font-size:.88rem;
+    }
+    footer .container{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    footer a{color:#fff}
+
+    .floating-wa{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      z-index:120;
+      height:58px;
+      padding:0 18px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      gap:9px;
+      background:#25D366;
+      color:#fff;
+      font-weight:800;
+      box-shadow:0 15px 35px rgba(0,0,0,.23);
+      transition:.25s ease;
+    }
+    .floating-wa:hover{transform:translateY(-3px) scale(1.02)}
+
+    @media (prefers-reduced-motion:reduce){
+      *,*:before,*:after{
+        animation:none!important;
+        transition:none!important;
+        scroll-behavior:auto!important;
+      }
+      .reveal{opacity:1;transform:none}
+    }
+
+    @media (max-width:980px){
+      .navlinks{display:none}
+      .brand-copy{display:none}
+      .brand{min-width:auto}
+      .hero{min-height:760px}
+      .hero-inner{padding-bottom:190px}
+      .hero-meta{grid-template-columns:1fr}
+      .meta-item{border-right:0;border-bottom:1px solid rgba(33,77,56,.08);padding:13px 18px}
+      .meta-item:last-child{border-bottom:0}
+      .experience-grid,.specials-grid,.visit-grid{grid-template-columns:1fr}
+      .menu-shell{grid-template-columns:1fr}
+      .menu-nav{position:static;display:flex;gap:7px;overflow:auto;padding:12px;border-radius:18px}
+      .menu-nav-head{display:none}
+      .menu-tab{min-width:max-content;width:auto;padding:12px 14px}
+      .gallery-grid{
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:240px 240px 220px;
+      }
+      .gallery-item.g1{grid-row:auto;grid-column:1/3}
+      .gallery-item.g4{grid-column:1/3}
+    }
+
+    @media (max-width:680px){
+      .topbar .container{justify-content:center;text-align:center;padding:8px 0}
+      nav{min-height:70px}
+      .brand img{width:48px;height:48px}
+      header .btn{min-height:43px;padding:0 15px;font-size:.86rem}
+      .hero{min-height:700px}
+      .hero-inner{padding:74px 0 210px}
+      .hero h1{font-size:3.65rem}
+      .hero p{font-size:1rem}
+      section{padding:76px 0}
+      .feature-list{grid-template-columns:1fr}
+      .menu-top{align-items:flex-start;flex-direction:column}
+      .menu-content{padding:24px 20px;min-height:0}
+      .panel-head{align-items:flex-start;flex-direction:column}
+      .menu-photo{width:100%;height:180px}
+      .dish-grid{grid-template-columns:1fr}
+      .dish{min-height:50px}
+      .menu-highlight{grid-template-columns:1fr}
+      .special-photo{min-height:400px}
+      .gallery-grid{
+        grid-template-columns:1fr;
+        grid-template-rows:repeat(4,220px);
+      }
+      .gallery-item.g1,.gallery-item.g4{grid-column:auto}
+      .map{min-height:390px}
+      .floating-wa{width:56px;height:56px;padding:0;justify-content:center}
+      .floating-wa span{display:none}
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <div><strong>Terça a sexta:</strong> 11:30–14:30 &nbsp; • &nbsp; <strong>Sáb., dom. e feriados:</strong> 11:30–15:30</div>
+      <a href="tel:+551938811120">Reservas: (19) 3881-1120</a>
+    </div>
+  </div>
+
+  <header id="header">
+    <nav class="container">
+      <a class="brand" href="#inicio" aria-label="Bambuzal Restaurante">
+        <img src="https://yata-apix-cc5e9166-3134-4db0-9901-84889409cb50.s3-object.locaweb.com.br/628a83acacc341ff9228c7287cdeb6e2.png" alt="Logo Bambuzal Restaurante">
+        <span class="brand-copy">
+          <strong>Bambuzal</strong>
+          <span>Restaurante</span>
+        </span>
+      </a>
+
+      <div class="navlinks">
+        <a href="#experiencia">Nossa casa</a>
+        <a href="#cardapio">Cardápio</a>
+        <a href="#especiais">Especiais</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#contato">Contato</a>
+      </div>
+
+      <a class="btn btn-primary" href="https://wa.me/5519996739512?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Bambuzal." target="_blank" rel="noopener">
+        Falar no WhatsApp
+      </a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero" id="inicio">
+      <div class="hero-bg"></div>
+
+      <div class="container">
+        <div class="hero-inner reveal visible">
+          <div class="eyebrow">Comida mineira • Valinhos</div>
+          <h1>Sabor de casa, <em>feito no fogo.</em></h1>
+          <p>
+            Buffet self-service servido no fogão a lenha, com pratos quentes, saladas, sobremesas, churrasqueira e uma experiência cercada pela natureza.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-light" href="#cardapio">Conhecer o cardápio</a>
+            <a class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.35)" href="https://www.instagram.com/bambuzal?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">Ver Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span>Reservas</span>
+          <strong>Terça a sexta-feira</strong>
+        </div>
+        <div class="meta-item">
+          <span>Fim de semana</span>
+          <strong>Atendimento por ordem de chegada</strong>
+        </div>
+        <div class="meta-item">
+          <span>Localização</span>
+          <strong>Chácaras São Bento • Valinhos/SP</strong>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <div class="container experience-grid">
+        <div class="experience-photo reveal">
+          <div class="photo-note">Mesas cercadas por verde, ambiente rústico e clima de almoço tranquilo.</div>
+        </div>
+
+        <div class="reveal">
+          <div class="section-kicker">Nossa experiência</div>
+          <h2 class="section-title">Não é só almoço. É um programa.</h2>
+          <p class="section-intro">
+            O Bambuzal combina comida caseira, fogão a lenha e um espaço arborizado que convida a ficar mais tempo à mesa. A proposta é simples: boa comida, ambiente acolhedor e aquele ritmo de domingo no interior.
+          </p>
+
+          <div class="feature-list">
+            <div class="feature"><strong>Fogão a lenha</strong><span>Pratos servidos quentes com sabor de comida feita em casa.</span></div>
+            <div class="feature"><strong>Buffet variado</strong><span>Saladas, pratos quentes, acompanhamentos e sobremesas.</span></div>
+            <div class="feature"><strong>Churrasqueira</strong><span>Seleção de carnes para completar o buffet.</span></div>
+            <div class="feature"><strong>Ambiente verde</strong><span>Mesas em espaços arborizados e próximos à natureza.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu" id="cardapio">
+      <div class="container">
+        <div class="menu-top reveal">
+          <div>
+            <div class="section-kicker">Nosso cardápio</div>
+            <h2 class="section-title">Uma mesa cheia de opções.</h2>
+            <p class="section-intro">
+              O buffet possui opções fixas e pratos que alternam de acordo com a disponibilidade. Navegue pelas categorias para conhecer melhor o que você pode encontrar por aqui.
+            </p>
+          </div>
+
+          <a class="btn btn-outline" href="https://wa.me/5519996739512?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20o%20card%C3%A1pio%20de%20hoje." target="_blank" rel="noopener">
+            Cardápio de hoje
+          </a>
+        </div>
+
+        <div class="menu-shell reveal">
+
+          <aside class="menu-nav" aria-label="Categorias do cardápio">
+            <div class="menu-nav-head">
+              <small>Escolha uma categoria</small>
+              <strong>Cardápio</strong>
+            </div>
+
+            <button class="menu-tab active" data-tab="quentes">Pratos quentes <span class="count">30+</span></button>
+            <button class="menu-tab" data-tab="saladas">Saladas <span class="count">20+</span></button>
+            <button class="menu-tab" data-tab="churrasqueira">Churrasqueira <span class="count">4</span></button>
+            <button class="menu-tab" data-tab="sobremesas">Sobremesas <span class="count">15+</span></button>
+          </aside>
+
+          <div class="menu-content">
+
+            <div class="menu-panel active" id="quentes">
+              <div class="panel-head">
+                <div>
+                  <h3>Pratos quentes</h3>
+                  <p>Clássicos de buffet, receitas caseiras e pratos que variam ao longo da semana.</p>
+                </div>
+                <div class="menu-photo" style="background-image:url('https://yata-apix-cc5e9166-3134-4db0-9901-84889409cb50.s3-object.locaweb.com.br/33bbe336f193444bbb25a23513b21d53.jpg')"></div>
+              </div>
+
+              <div class="dish-grid">
+                <div class="dish">Arroz</div>
+                <div class="dish">Arroz integral</div>
+                <div class="dish">Arroz carreteiro</div>
+                <div class="dish rotative">Arroz com alho-poró</div>
+                <div class="dish">Feijão</div>
+                <div class="dish">Feijão tropeiro</div>
+                <div class="dish">Feijão com tranqueira</div>
+                <div class="dish">Feijoada</div>
+                <div class="dish">Dobradinha</div>
+                <div class="dish">Rabada</div>
+                <div class="dish">Torresmo</div>
+                <div class="dish">Costelinha suína</div>
+                <div class="dish">Cupim ao molho madeira</div>
+                <div class="dish">Bife à parmegiana</div>
+                <div class="dish">Strogonoff de frango</div>
+                <div class="dish">Lasanha de queijos</div>
+                <div class="dish">Berinjela com queijos</div>
+                <div class="dish">Couve refogada</div>
+                <div class="dish">Farofa</div>
+                <div class="dish rotative">Batata-doce</div>
+                <div class="dish">Isca de cação</div>
+                <div class="dish">Ovo frito</div>
+                <div class="dish rotative">Mandioca ou polenta frita</div>
+                <div class="dish rotative">Anel de cebola</div>
+                <div class="dish">Banana frita</div>
+                <div class="dish">Bolinho de arroz com parmesão</div>
+                <div class="dish rotative">Cuscuz apimentado</div>
+                <div class="dish rotative">Abobrinha recheada</div>
+                <div class="dish rotative">Pimentão recheado</div>
+                <div class="dish rotative">Frango assado com batata</div>
+                <div class="dish rotative">Purê de batata</div>
+                <div class="dish rotative">Creme de milho</div>
+                <div class="dish rotative">Omelete</div>
+                <div class="dish rotative">Porpetone recheado com queijo</div>
+              </div>
+
+              <div class="menu-foot">Itens identificados como “rotativo” podem variar conforme a disponibilidade do buffet.</div>
+            </div>
+
+            <div class="menu-panel" id="saladas">
+              <div class="panel-head">
+                <div>
+                  <h3>Saladas</h3>
+                  <p>Variedade de folhas, legumes e acompanhamentos frescos para montar seu prato.</p>
+                </div>
+                <div class="menu-photo" style="background-image:url('https://yata-apix-cc5e9166-3134-4db0-9901-84889409cb50.s3-object.locaweb.com.br/4329212748db41b49efd8dda5dfce563.jpg')"></div>
+              </div>
+
+              <div class="dish-grid">
+                <div class="dish">Alface</div>
+                <div class="dish">Rúcula</div>
+                <div class="dish">Tomate seco</div>
+                <div class="dish">Acelga</div>
+                <div class="dish">Maionese de legumes ou batata</div>
+                <div class="dish">Salada de berinjela</div>
+                <div class="dish">Salada de abobrinha assada</div>
+                <div class="dish">Cenoura</div>
+                <div class="dish">Vagem</div>
+                <div class="dish">Chuchu</div>
+                <div class="dish">Mandioquinha</div>
+                <div class="dish">Pepino</div>
+                <div class="dish">Beterraba</div>
+                <div class="dish">Palmito especial</div>
+                <div class="dish">Vinagrete</div>
+                <div class="dish">Brócolis</div>
+                <div class="dish">Couve-flor</div>
+                <div class="dish">Quiabo</div>
+                <div class="dish">Jiló</div>
+                <div class="dish">Ovo de codorna</div>
+                <div class="dish">Tomate-cereja</div>
+              </div>
+            </div>
+
+            <div class="menu-panel" id="churrasqueira">
+              <div class="panel-head">
+                <div>
+                  <h3>Churrasqueira</h3>
+                  <p>Seleção de carnes servidas para complementar o buffet.</p>
+                </div>
+                <div class="menu-photo" style="background-image:url('https://yata-apix-cc5e9166-3134-4db0-9901-84889409cb50.s3-object.locaweb.com.br/9c2662ddaf61472589c1e6cce103374d.jpg')"></div>
+              </div>
+
+              <div class="dish-grid">
+                <div class="dish">Contra-filé exportação</div>
+                <div class="dish">Filé de frango</div>
+                <div class="dish">Picanha suína</div>
+                <div class="dish">Linguiça</div>
+              </div>
+
+              <div class="menu-highlight">
+                <div class="icon">🔥</div>
+                <div>
+                  <strong>Direto da churrasqueira para o prato.</strong>
+                  <span>Uma das áreas que mais reforçam a experiência de comida farta e almoço de fim de semana.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-panel" id="sobremesas">
+              <div class="panel-head">
+                <div>
+                  <h3>Sobremesas</h3>
+                  <p>Doces caseiros, cremes e clássicos para encerrar o almoço.</p>
+                </div>
+                <div class="menu-photo" style="background-image:url('https://yata-apix-cc5e9166-3134-4db0-9901-84889409cb50.s3-object.locaweb.com.br/60f07cb541cc4aeb8107c78741c1abb6.jpg')"></div>
+              </div>
+
+              <div class="dish-grid">
+                <div class="dish">Pavê de limão</div>
+                <div class="dish">Pavê de amendoim</div>
+                <div class="dish rotative">Pavê de maracujá</div>
+                <div class="dish rotative">Pavê de chocolate</div>
+                <div class="dish">Doce de leite</div>
+                <div class="dish">Pudim de leite condensado</div>
+                <div class="dish">Beijão</div>
+                <div class="dish">Brigadeirão</div>
+                <div class="dish">Strogonoff de abacaxi</div>
+                <div class="dish">Cocada branca cremosa</div>
+                <div class="dish">Cocada queimada cremosa</div>
+                <div class="dish">Doce de figo</div>
+                <div class="dish">Banana caramelada</div>
+                <div class="dish rotative">Doce de abóbora</div>
+                <div class="dish rotative">Manjar de coco</div>
+                <div class="dish">Maria-mole</div>
+                <div class="dish">Gelatina colorida</div>
+                <div class="dish">Ganache de chocolate</div>
+                <div class="dish">Chantilly com morango</div>
+                <div class="dish">Queijo com goiabada</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="specials" id="especiais">
+      <div class="container specials-grid">
+        <div class="reveal">
+          <div class="section-kicker">Sábados, domingos e feriados</div>
+          <h2 class="section-title">Especiais que transformam o almoço.</h2>
+          <p class="section-intro">
+            Nos finais de semana e feriados, o buffet ganha pratos especiais que deixam a experiência ainda mais completa.
+          </p>
+
+          <div class="special-cards">
+            <div class="special-card"><i>✓</i><strong>Camarão na moranga</strong></div>
+            <div class="special-card"><i>✓</i><strong>Bacalhoada</strong></div>
+            <div class="special-card"><i>✓</i><strong>Salmão grelhado</strong></div>
+          </div>
+
+          <a class="btn btn-light" href="https://wa.me/5519996739512?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20quais%20pratos%20especiais%20estar%C3%A3o%20no%20buffet." target="_blank" rel="noopener">
+            Consultar especiais
+          </a>
+        </div>
+
+        <div class="special-photo reveal"></div>
+      </div>
+    </section>
+
+    <section id="galeria">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-kicker">Galeria</div>
+          <h2 class="section-title">Primeiro você vê. Depois dá fome.</h2>
+          <p class="section-intro">Fotos reais ajudam a mostrar o que mais vende o Bambuzal: comida farta, ambiente rústico e uma experiência diferente do restaurante tradicional.</p>
+        </div>
+
+        <div class="gallery-grid reveal">
+          <div class="gallery-item g1" style="background-image:url('https://yata-apix-cc5e9166-3134-4db0-9901-84889409cb50.s3-object.locaweb.com.br/8c63901b5bda4cc5a3b47ccc2ff1225b.jpg')"></div>
+          <div class="gallery-item" style="background-image:url('https://yata-apix-cc5e9166-3134-4db0-9901-84889409cb50.s3-object.locaweb.com.br/fbb7d8a92b1c4e498aef7c03941af34a.jpg')"></div>
+          <div class="gallery-item" style="background-image:url('https://yata-apix-cc5e9166-3134-4db0-9901-84889409cb50.s3-object.locaweb.com.br/9c2662ddaf61472589c1e6cce103374d.jpg')"></div>
+          <div class="gallery-item g4" style="background-image:url('https://yata-apix-cc5e9166-3134-4db0-9901-84889409cb50.s3-object.locaweb.com.br/61f8df3277aa40eeb09fd60ae55dcde0.jpg')"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit" id="contato">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-kicker" style="color:#dce8bb">Visite o Bambuzal</div>
+          <h2 class="section-title">Seu próximo almoço pode ser aqui.</h2>
+        </div>
+
+        <div class="visit-grid reveal">
+          <div class="visit-card">
+            <h3>Informações</h3>
+
+            <div class="info">
+              <span>Endereço</span>
+              <strong>Rua Duílio Beltramini, 8373 — Chácaras São Bento, Valinhos/SP — 13278-078</strong>
+            </div>
+
+            <div class="info">
+              <span>Funcionamento</span>
+              <strong>Terça a sexta: 11:30 às 14:30<br>Sábados, domingos e feriados: 11:30 às 15:30<br>Segundas-feiras: fechado</strong>
+            </div>
+
+            <div class="info">
+              <span>Contato</span>
+              <strong>(19) 3881-1120<br>WhatsApp: (19) 99673-9512<br>restaurantebambuzal@gmail.com</strong>
+            </div>
+
+            <div class="info">
+              <span>Reservas</span>
+              <strong>De terça a sexta. Sábados e domingos: atendimento por ordem de chegada.</strong>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:28px">
+              <a class="btn btn-light" href="https://wa.me/5519996739512" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.2)" href="https://www.instagram.com/bambuzal?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
+
+          <iframe
+            class="map"
+            loading="lazy"
+            title="Localização do Bambuzal Restaurante"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.9946691830287!2d-47.01749688527075!3d-23.023967947850604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8cc6beace6711%3A0x4b971774ffcb3078!2sBambuzal%20Restaurante!5e0!3m2!1sen!2sbr!4v1583168141346!5m2!1sen!2sbr">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>© Bambuzal Restaurante • Valinhos/SP</div>
+      <div>
+        <a href="https://www.instagram.com/bambuzal?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">Instagram</a>
+        &nbsp; • &nbsp;
+        <a href="https://www.facebook.com/bambuzalvalinhos/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="floating-wa" href="https://wa.me/5519996739512?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
+    <b>WA</b><span>WhatsApp</span>
+  </a>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach(item => observer.observe(item));
+
+    const tabs = document.querySelectorAll('.menu-tab');
+    const panels = document.querySelectorAll('.menu-panel');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
